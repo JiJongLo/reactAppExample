@@ -1,1 +1,2 @@
 # reactAppExample
+npm start
