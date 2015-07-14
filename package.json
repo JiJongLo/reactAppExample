@@ -1,7 +1,7 @@
 
 {
   "name": "myreactjsapp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "learn framework reactjs + reflux",
   "author": "Juriy ganiball54@gmail.com",  
   "bin": {
@@ -9,7 +9,7 @@
 },
   "repository": {
   "type": "git",
-  "url": "https://github.com/nodejitsu/browsenpm.org"
+  "url": "https://github.com/JiJongLo/reactAppExample.git"
 },
   "keywords": [
   "react",
@@ -31,6 +31,16 @@
    "gulp-less " : "3.0.3",
    "gulp-debug" : "2.0.1",
    "gulp-babel" : "latest",
+    "babelify": "^6.1.2",
+    "browser-sync": "^1.8.1",
+    "browserify": "^7.0.3",
+    "gulp-notify": "^2.1.0",
+    "gulp-util": "^3.0.1",
+    "pretty-hrtime": "^0.2.2",
+    "require-dir": "^0.1.0",
+    "underscore": "^1.7.0",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.2.1",
    "gulp-sourcemaps" : "latest",
    "gulp-concat" : "2.6.0",
    "gulp-changed" : "1.2.1",
