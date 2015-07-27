@@ -1,5 +1,5 @@
 var dest = './build',
-  src = './',
+  src = './project/',
   mui = './node_modules/material-ui/src';
 
 module.exports = {
@@ -7,14 +7,14 @@ module.exports = {
     server: {
       // We're serving the src folder as well
       // for sass sourcemap linking
-      baseDir: [dest, src]
+      baseDir: [dest]
     },
     files: [
       dest + '/**'
     ]
   },
   markup: {
-    src: src + "/public/**",
+    src: src + "/**",
     dest: dest
   },
   browserify: {
@@ -23,7 +23,7 @@ module.exports = {
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
-      entries: src + 'public/js/app.jsx',
+      entries: src + 'js/app.jsx',
       dest: dest,
       outputName: 'app.js'
     }]
