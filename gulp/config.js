@@ -1,4 +1,4 @@
-var dest = './build',
+var dest = './build/',
   src = './project/',
   mui = './node_modules/material-ui/src';
 
@@ -10,20 +10,21 @@ module.exports = {
       baseDir: [dest]
     },
     files: [
-      dest + '/**'
+      dest + '**'
     ]
   },
   markup: {
-    src: src + "/**",
+    src: src + "**",
     dest: dest
   },
+
   browserify: {
     // Enable source maps
     debug: true,
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
-      entries: src + 'js/app.jsx',
+      entries: './project/js/app.jsx',
       dest: dest,
       outputName: 'app.js'
     }]
