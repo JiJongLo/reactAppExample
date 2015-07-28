@@ -3,10 +3,8 @@ let React = require('react');
 let mui = require('material-ui');
 let RaisedButton = mui.RaisedButton;
 let Dialog = mui.Dialog;
-
 let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
-
 let Main = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
@@ -17,10 +15,9 @@ let Main = React.createClass({
         muiTheme: ThemeManager.getCurrentTheme()
     };
 },
-
     render() {
         return (
-            <RaisedButton label="ddfdfd" />
+            <RaisedButton label="Детальна інформація" />
     );
 }
 
