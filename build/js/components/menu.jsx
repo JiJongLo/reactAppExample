@@ -1,7 +1,7 @@
 /** In this file, we create a React component which incorporates components provided by material-ui */
 let React = require('react');
 let mui = require('material-ui');
-let RaisedButton = mui.RaisedButton;
+let AppBar = mui.AppBar;
 let Dialog = mui.Dialog;
 let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
@@ -16,25 +16,12 @@ let Menu = React.createClass({
     },
     render() {
         return (
-            <RaisedButton label="Детальна інформація" />
+            <AppBar
+                title="Title"
+                iconClassNameRight="muidocs-icon-navigation-expand-more" />
         );
     }
 
 });
-let Main = React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-    getChildContext() {
-    return {
-        muiTheme: ThemeManager.getCurrentTheme()
-    };
-},
-    render() {
-        return (
-            <RaisedButton label="Детальна інформація" />
-    );
-}
 
-});
-module.exports = Main;
+module.exports = Menu;

@@ -6,7 +6,7 @@
 
 var gulp   = require('gulp');
 var config = require('../config');
-var watchdir = "../../project/"
+var watchdir = "../../project"
 gulp.task('watch', ['setWatch', 'browserSync'], function() {
   gulp.watch(watchdir, ['markup']);
 });
