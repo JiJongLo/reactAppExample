@@ -17,10 +17,14 @@ module.exports = {
     src: src + "**",
     dest: dest
   },
-
+  watch : {
+    srcJs : src + "js/**.jsx",
+    srcCss : src + "css/**",
+    srcHtml : src + "*",
+  },
   browserify: {
     // Enable source maps
-    debug: true,
+    debug: false,
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{

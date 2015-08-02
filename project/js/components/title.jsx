@@ -5,7 +5,7 @@ let AppBar = mui.AppBar;
 let Dialog = mui.Dialog;
 let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
-let Menu = React.createClass({
+let Title = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
@@ -17,11 +17,11 @@ let Menu = React.createClass({
     render() {
         return (
             <AppBar
-                title="Title"
+                title="Меню"
                 iconClassNameRight="muidocs-icon-navigation-expand-more" />
         );
     }
 
 });
 
-module.exports = Menu;
+module.exports = Title;

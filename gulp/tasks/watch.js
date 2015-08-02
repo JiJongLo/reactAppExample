@@ -1,12 +1,7 @@
-
-/* Notes:
-   - gulp/tasks/browserify.js handles js recompiling with watchify
-   - gulp/tasks/browserSync.js watches and reloads compiled files
-*/
-
 var gulp   = require('gulp');
-var config = require('../config');
-var watchdir = "../../project"
+var configWatch = require('../config').watch;
 gulp.task('watch', ['setWatch', 'browserSync'], function() {
-  gulp.watch(watchdir, ['markup']);
+    gulp.watch(configWatch.srcJs, ['markup']);
+    gulp.watch(configWatch.srcCss, ['markup']);
+    gulp.watch(configWatch.srcHtml, ['markup']);
 });
