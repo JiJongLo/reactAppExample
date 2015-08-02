@@ -15,7 +15,6 @@
     var mainbutton  = document.getElementById("material-desing-button");
     var title  = document.getElementById("navbarInfoPanel");
     React.render(<Main />, mainbutton);
-
     React.render(<Title />, title);
 
 })();
