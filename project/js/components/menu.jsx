@@ -5,14 +5,6 @@ let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 let LeftNav = mui.LeftNav;
 let  MenuMain = React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
-    },
     render() {
         let menuItems  = [
             { route: 'get-started', text: 'Get Started' },
@@ -34,9 +26,9 @@ let  MenuMain = React.createClass({
                 text: 'Disabled Link',
                 disabled: true
             },
-        ]
+        ];
         return (
-            <LeftNav ref="leftNav" docked={true} menuItems={menuItems} />
+            <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
         );
     }
 
