@@ -8,7 +8,9 @@ let Colors = mui.Styles.Colors;
 let Title = require("./title.jsx");
 let LeftNav = require("./menu.jsx");
 var Reflux = require('reflux');
+var ReactRouter = require('react-router');
 let Main = React.createClass({
+    mixins: [ ReactRouter.State ],
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
@@ -17,15 +19,12 @@ let Main = React.createClass({
         muiTheme: ThemeManager.getCurrentTheme()
        };
     },
-    toogleLeftNav (){
-        debugger;
-    },
     render () {
         return (
         <div>
         <div className="header">
             <nav>
-                <Title/>
+                <Title toogleMenu = {this.handleClick}/>
             </nav>
         </div>
         <LeftNav/>
