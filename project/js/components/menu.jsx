@@ -5,6 +5,11 @@ let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 let LeftNav = mui.LeftNav;
 let  MenuMain = React.createClass({
+    getInitialState() {
+        return {
+            dock : false
+        };
+    },
     render() {
         let menuItems  = [
             { route: 'get-started', text: 'Get Started' },
@@ -27,8 +32,9 @@ let  MenuMain = React.createClass({
                 disabled: true
             },
         ];
+        let dockState = this.props.dockState;
         return (
-            <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
+            <LeftNav ref="leftNav" docked={dockState} menuItems={menuItems} />
         );
     }
 

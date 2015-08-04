@@ -7,19 +7,15 @@ let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 let MenuMain = require('./menu.jsx');
 let Title = React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
+    toogleClick (){
+        this.props.toogleClickEvent()
     },
     render() {
         return (
             <AppBar
                 title="Меню"
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
+                onLeftIconButtonTouchTap = {this. toogleClick}
                 />
         );
     }

@@ -14,20 +14,32 @@ let Main = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
+    getInitialState() {
+        return {
+            dock : false
+        };
+    },
     getChildContext() {
     return {
         muiTheme: ThemeManager.getCurrentTheme()
        };
+    },
+    handleClickMenu() {
+        console.log("ddd");
+        this.setState({
+            dock : true
+        })
+
     },
     render () {
         return (
         <div>
         <div className="header">
             <nav>
-                <Title toogleMenu = {this.handleClick}/>
+                <Title toogleClickEvent  = {this.handleClickMenu}/>
             </nav>
         </div>
-        <LeftNav/>
+        <LeftNav dockState = {this.state.dock} />
         <div className="row" id = "main-menu"> </div>
                 <div className="container">
                     <div className="jumbotron">
