@@ -12,24 +12,14 @@ let  MenuMain = React.createClass({
       },
       render() {
         let menuItems  = [
-            { route: 'get-started', text: 'Get Started' },
-            { route: 'customization', text: 'Customization' },
-            { route: 'components', text: 'Components' },
+            { route: 'books', text: 'Список книг' },
+            { route: 'customization', text: 'Жанр' },
+            { route: 'authors', text: 'Список авторів' },
             { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
             {
                 type: MenuItem.Types.LINK,
                 payload: 'https://github.com/JiJongLo/reactAppExample',
                 text: 'GitHub'
-            },
-            {
-                text: 'Disabled',
-                disabled: true
-            },
-            {
-                type: MenuItem.Types.LINK,
-                payload: 'https://www.google.com',
-                text: 'Disabled Link',
-                disabled: true
             }
         ];
         return (
