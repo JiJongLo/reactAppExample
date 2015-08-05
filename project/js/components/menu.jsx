@@ -5,12 +5,11 @@ let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 let LeftNav = mui.LeftNav;
 let  MenuMain = React.createClass({
-    getInitialState() {
-        return {
-            dock : false
-        };
-    },
-    render() {
+      shouldComponentUpdate (nextProps, nextState){
+          this.refs.leftNav.setState({open: true});
+          return true;
+      },
+      render() {
         let menuItems  = [
             { route: 'get-started', text: 'Get Started' },
             { route: 'customization', text: 'Customization' },
@@ -30,12 +29,12 @@ let  MenuMain = React.createClass({
                 payload: 'https://www.google.com',
                 text: 'Disabled Link',
                 disabled: true
-            },
+            }
         ];
-        let dockState = this.props.dockState;
         return (
-            <LeftNav ref="leftNav" docked={dockState} menuItems={menuItems} />
+            <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
         );
+
     }
 
 });
