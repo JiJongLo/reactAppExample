@@ -1,9 +1,10 @@
 let React = require('react');
 let mui = require('material-ui');
-let MenuItem = require('material-ui/lib/menu/menu-item')
+let MenuItem = require('material-ui/lib/menu/menu-item');
 let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 let LeftNav = mui.LeftNav;
+
 let  MenuMain = React.createClass({
       shouldComponentUpdate (nextProps, nextState){
           this.refs.leftNav.setState({open: true});
@@ -17,7 +18,7 @@ let  MenuMain = React.createClass({
             { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
             {
                 type: MenuItem.Types.LINK,
-                payload: 'https://github.com/callemall/material-ui',
+                payload: 'https://github.com/JiJongLo/reactAppExample',
                 text: 'GitHub'
             },
             {
@@ -32,7 +33,7 @@ let  MenuMain = React.createClass({
             }
         ];
         return (
-            <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
+            <LeftNav ref="leftNav" docked={false} menuItems={menuItems}/>
         );
 
     }
