@@ -11,7 +11,8 @@ let FontIcon = mui.FontIcon;
 let Title = React.createClass({
     getInitialState() {
         return {
-            toogle : false
+            toogle : false,
+            labelLogin : "Логин"
         };
     },
     toogleClick (){
@@ -24,8 +25,17 @@ let Title = React.createClass({
             apiKey : "AIzaSyDylgzIELm-njDTphOnAYr2lx3dwnDrxNg",
             scopes : 'https://www.googleapis.com/auth/plus.me'
         };
-        var CallbackRegistry = {}; // реестр
+        let self = this;
+        function handleClientLoad() {
+            gapi.client.setApiKey(dataAuthorizire.apiKey);
+            window.setTimeout(checkAuth,1);
+        }
+        function handleClientLoadFail() {
+            console.log(arguments);
+        }
         function scriptRequest(url, onSuccess, onError) {
+            window.CallbackRegistry = {
+            };
             var scriptOk = false; // флаг, что вызов прошел успешно
             // сгенерировать имя JSONP-функции для запроса
             var callbackName = 'cb' + String(Math.random()).slice(-6);
@@ -37,11 +47,10 @@ let Title = React.createClass({
                 onSuccess(data); // и вызвать onSuccess
             };
 
-
             function checkCallback() {
-                if (scriptOk) return; // сработал обработчик?
-                delete CallbackRegistry[callbackName];
-                onError(url); // нет - вызвать onError
+                if(gapi.client) setTimeout(CallbackRegistry[callbackName], 0);
+                else setTimeout(checkCallback, 50);
+
             }
             var script = document.createElement('script');
             script.onreadystatechange = function() {
@@ -56,8 +65,35 @@ let Title = React.createClass({
 
             document.body.appendChild(script);
         };
-        scriptRequest("https://apis.google.com/js/client.js", ok, fail);
-        debugger;
+        scriptRequest("https://apis.google.com/js/client.js", handleClientLoad, handleClientLoadFail);
+        function checkAuth() {
+            gapi.auth.authorize({client_id: dataAuthorizire.clientId, scope: dataAuthorizire.scopes, immediate: true}, handleAuthResult);
+        }
+        function handleAuthResult(authResult) {
+            var authorizeButton = document.getElementById('authorize-button');
+            if (authResult && !authResult.error) {
+                makeApiCall();
+            } else {
+                authorizeButton.style.visibility = '';
+                authorizeButton.onclick = handleAuthClick;
+            }
+        }
+        function handleAuthClick(event) {
+            gapi.auth.authorize({client_id: dataAuthorizire.clientId, scope: dataAuthorizire.scopes, immediate: false}, handleAuthResult);
+            return false;
+        }
+        // Load the API and make an API call.  Display the results on the screen.
+        function makeApiCall() {
+
+            gapi.client.load('plus', 'v1', function() {
+                var request = gapi.client.plus.people.get({
+                    'userId': 'me'
+                });
+                request.execute(function(resp) {
+                    self.setState({labelLogin : resp.displayName})
+                });
+            });
+        }
 
     },
     render() {
@@ -73,7 +109,7 @@ let Title = React.createClass({
                     title="Меню"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonTouchTap = {this.toogleClick}
-                    iconElementRight={ <FlatButton label= "Логин"   onClick = {this.authorizeHandler} style = {styles} id="authorize-button">
+                    iconElementRight={ <FlatButton label= {this.state.labelLogin}   onClick = {this.authorizeHandler} style = {styles} id="authorize-button">
                         </FlatButton>
                         }
                  />
