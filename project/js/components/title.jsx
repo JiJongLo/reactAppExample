@@ -84,24 +84,36 @@ let Title = React.createClass({
         }
         // Load the API and make an API call.  Display the results on the screen.
         function makeApiCall() {
-
             gapi.client.load('plus', 'v1', function() {
                 var request = gapi.client.plus.people.get({
                     'userId': 'me'
                 });
                 request.execute(function(resp) {
-                    self.setState({labelLogin : resp.displayName})
+                    self.setState({labelLogin : resp.displayName ?  resp.displayName  : "Anonymous"
+                    })
                 });
             });
         }
 
     },
     render() {
+
         var styles = {
             backgroundColor : "transparent",
             color : "rgba(255, 255, 255, 0.87)",
-            marginTop : 8
+            marginTop : 8,
+            exampleFlatButtonIcon :{
+                color: "#00bcd4",
+                display: "inline-block",
+                float: "left",
+                height: "100%",
+                lineHeight: "36px",
+                paddingLeft: "12px",
+                verticalAlign: "middle",
+                backgroundImage: "url(images/login.png)"
+            }
         };
+
         return (
             <div>
                 <MenuMain  dockState = {this.state.toogle} />
@@ -110,6 +122,7 @@ let Title = React.createClass({
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     onLeftIconButtonTouchTap = {this.toogleClick}
                     iconElementRight={ <FlatButton label= {this.state.labelLogin}   onClick = {this.authorizeHandler} style = {styles} id="authorize-button">
+                            <FontIcon  style={styles.exampleFlatButtonIcon} className="muidocs-icon-custom-github"/>
                         </FlatButton>
                         }
                  />

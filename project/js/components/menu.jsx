@@ -4,10 +4,10 @@ let MenuItem = require('material-ui/lib/menu/menu-item');
 let ThemeManager = new mui.Styles.ThemeManager();
 let Colors = mui.Styles.Colors;
 let LeftNav = mui.LeftNav;
-
 let  MenuMain = React.createClass({
       shouldComponentUpdate (nextProps, nextState){
-          this.refs.leftNav.setState({open: true});
+          this.refs.leftNav.toggle();
+
           return true;
       },
       render() {
