@@ -4,7 +4,7 @@
     let Main = require('./components/main.jsx'); // Our custom react component
     window.React = React;
     injectTapEventPlugin();
-    React.render(<Main />, document.body);
 
+    React.render(<Main />, document.body);
 
 })();
